@@ -4,7 +4,7 @@ Validated on **2026-09-14** during authoring.
 
 | Check / 检查 | Observed result / 实际结果 |
 | --- | --- |
-| Package tests | `node --test tests/package.test.mjs`: 4 passed, 0 failed. |
+| Package tests | `node --test tests/package.test.mjs`: 5 passed, 0 failed. |
 | Skill frontmatter | Skill Creator `quick_validate.py`: `Skill is valid!` |
 | iPolloWork manifest | Passed the upstream `validatePluginPackageManifest` function from commit `0aaa843a91cc4f67c1a673064b36305a2076ea6f`, executed with Zod 4.3.6. |
 | Credential scan | Exact matching against the locally stored publishing credentials found no matches in the distribution. Values were not printed or included. |
@@ -22,8 +22,8 @@ The package checks were also run before package files existed: three checks fail
 
 编写前，无 Skill 的模型已能区分三个技术结论，但没有统一 JSON 交接结构、缺失命令标识和提交复查状态。加入 Skill 后验证了这些交接字段及补充场景；不据此声称提高了缺陷识别准确率。自动包检查先观察到必要文件缺失导致失败，完成实现后全部通过。
 
-## Boundaries / 验证边界
+## Desktop follow-up / 桌面追加验收
 
-No live PR was audited, no real project regression was executed, and the package was not installed into a running iPolloWork desktop instance during these checks. The compatibility claim is supported by the official manifest validator and documented portable-skill workflow. Actual engine behavior and local permissions remain host-dependent.
+The initial schema-only boundary above was superseded by a real iPollo 0.50.12 installation and invocation. See [desktop acceptance](desktop-acceptance.md) for the failed original import, fixed 1.1.0 package, actual Skill loading, and working UI-plugin handoff. Live PR integration and real project regressions remain untested.
 
-上述检查没有复核真实 PR、执行真实项目回归测试或在运行中的 iPolloWork 桌面实例中安装。兼容依据是官方清单校验器和公开的可移植 Skill 流程；实际引擎表现与权限依赖宿主。
+已追加实际桌面安装和调用，完整记录见[桌面验收](desktop-acceptance.md)。真实 PR 集成和项目回归仍未测试。
