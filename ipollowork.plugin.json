@@ -10,17 +10,20 @@
     "trusted": false,
     "reference": "https://github.com/lemonlavender/copilot-review-verifier-2026-09-14"
   },
-  "composer": {"prompt": "Use copilot-review-verifier to audit these AI review comments against the current PR commit and produce an evidence ledger."},
+  "composer": {
+    "prompt": "Use copilot-review-verifier to audit these AI review comments against the current PR commit and produce an evidence ledger."
+  },
   "package": {
-    "version": "1.0.0",
-    "publisher": {"id": "lemonlavender", "name": "lemonlavender"},
-    "compatibility": {"ipollowork": ">=0.18.0"},
+    "version": "1.1.0",
+    "publisher": {
+      "id": "lemonlavender",
+      "name": "lemonlavender"
+    },
+    "compatibility": {
+      "ipollowork": "0.50.12"
+    },
     "updateId": "lemonlavender/copilot-review-verifier"
   },
-  "permissions": [
-    {"id": "workspace-read", "reason": "Inspect the user-selected repository and test evidence.", "optional": true},
-    {"id": "network", "reason": "Read user-selected GitHub review threads when a connection is available.", "optional": true}
-  ],
   "resources": [
     {
       "type": "skill",
@@ -28,7 +31,9 @@
       "label": "AI Review Evidence Audit",
       "description": "Trace findings to code and test evidence, including resolved or outdated threads.",
       "path": "skills/copilot-review-verifier",
-      "provides": ["workflow:copilot-review-verifier"],
+      "provides": [
+        "workflow:copilot-review-verifier"
+      ],
       "required": true
     }
   ],
@@ -39,11 +44,14 @@
         "name": "Copilot 审查结论复核",
         "description": "对照被审查提交与测试证据核实 AI 审查意见，生成可追溯的交接记录。",
         "category": "开发与审查",
-        "composer": {"prompt": "使用 copilot-review-verifier 对照当前 PR 提交复核 AI 审查意见，并生成证据记录。"},
-        "resources": {"copilot-review-verifier": {"label": "AI 审查证据复核", "description": "追踪审查意见对应的代码和测试证据，覆盖已解决和已过时的评论。"}},
-        "permissions": {
-          "workspace-read": {"reason": "读取用户指定的仓库与测试证据。"},
-          "network": {"reason": "连接可用时读取用户指定的 GitHub 审查评论。"}
+        "composer": {
+          "prompt": "使用 copilot-review-verifier 对照当前 PR 提交复核 AI 审查意见，并生成证据记录。"
+        },
+        "resources": {
+          "copilot-review-verifier": {
+            "label": "AI 审查证据复核",
+            "description": "追踪审查意见对应的代码和测试证据，覆盖已解决和已过时的评论。"
+          }
         }
       }
     }
