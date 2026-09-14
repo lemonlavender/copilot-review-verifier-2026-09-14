@@ -7,6 +7,16 @@ import path from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (p) => readFileSync(path.join(root, p), 'utf8');
 
+test('ordinary unsigned file import does not request privileged capabilities', () => {
+  const m = JSON.parse(read('ipollowork.plugin.json'));
+  assert.equal(m.source.trusted, false);
+  assert.equal((m.permissions ?? []).length, 0);
+  assert.equal((m.localServices ?? []).length, 0);
+  assert.equal(m.engineBindings, undefined);
+  assert.equal(m.authorization, undefined);
+  assert.ok(m.resources.every(r => r.type === 'skill'));
+});
+
 test('portable package owns the complete skill and its handoff template', () => {
   const m = JSON.parse(read('ipollowork.plugin.json'));
   assert.equal(m.schemaVersion, 2);
